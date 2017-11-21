@@ -1,0 +1,9 @@
+{
+    "name": "skillbox-form-typescript",
+    "author": "Andrey Korolev",
+    "version": "1.0.0",
+    "repository": "git://github.com/andrey-skillbox/ts-forms",
+    "dependencies": {
+        "rxjs": "^5.4.2"
+    }
+}
