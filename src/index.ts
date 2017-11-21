@@ -25,14 +25,16 @@ export class Form implements iForm {
 	public message: iMessage;
 	public children: Form[];
 	public get_fields = () => this.fields;
-	private on_submit = console.log;
-	private on_close = console.log;
+	private on_submit: (state: DataForm) => any;
+	private on_close: () => any;
 	
 	constructor(fields: Field[] = [], on_submit?: (state: DataForm) => any, on_close?: () => any,
 		        children: Form[] = [], extra_fields?: Field[],) {
 	  this.children = children;
 	  this.fields = fields;
 	  this.extra_fields = extra_fields;
+	  this.on_submit = on_submit ? on_submit : console.log;
+	  this.on_close = on_close ? on_close : undefined;
 	}
 
 	public set_data(): DataForm {
