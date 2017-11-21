@@ -21,7 +21,7 @@ class StringField implements iField {
 	public val: string;
 	public type: TypeField;
 	public required: boolean;
-  public message;
+  public message: iMessage;
 
 	constructor(name: string, label: string, val: string = '', required: boolean = true, type?: TypeField,) {
 	  this.name = name;
@@ -36,22 +36,22 @@ class StringField implements iField {
 
 export class TextField extends StringField {
 	
-  public readonly type: 'text' = 'text';
+  public type: 'text' = 'text';
 }
 
 export class InfoField extends StringField {
 	
-  public readonly type: 'info' = 'info';
+  public type: 'info' = 'info';
 }
 
 export class PasswordField extends StringField {
 	
-  public readonly type: 'password' = 'password';
+  public type: 'password' = 'password';
 }
 
 export class TextareaField extends StringField {
 
-  public readonly type: 'textarea' = 'textarea';
+  public type: 'textarea' = 'textarea';
 }
 
 class UrlField implements iField {
@@ -62,7 +62,7 @@ class UrlField implements iField {
   public readonly type: TypeField;
   public multiple: boolean;
   public required: boolean;
-  public message;
+  public message: iMessage;
 
   constructor(name: string, label: string, val: string[] = [], type: TypeField, required: boolean, multiple: boolean = false) {
 	this.name = name;
@@ -93,7 +93,7 @@ export class SelectField implements iField {
   public multiple: boolean;
   public options: any[];
   public required: boolean;
-  public message;
+  public message: iMessage;
 
   constructor(name: string, label: string, val: string[] = [], required: boolean,
   	          type: TypeField, multiple: boolean = false, options: Observable<any[]>) {
@@ -114,7 +114,7 @@ export class BooleanField implements iField {
   public val: boolean;
   public readonly type: 'checkbox';
   public required: boolean;
-  public message;
+  public message: iMessage;
 
   constructor(name: string, label: string, val: boolean = false, type: TypeField, required: boolean,) {
 	this.name = name;
