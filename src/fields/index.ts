@@ -10,7 +10,7 @@ export interface iField {
   options?: string[],
   readonly multiple?: boolean,
   val: any;
-  message: iMessage,
+  message?: iMessage,
   readonly name: string,
 }
 
