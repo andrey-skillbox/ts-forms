@@ -3,7 +3,7 @@ import { iMessage, MessageType } from './message';
 
 
 interface DataForm {
-  children: DataForm;
+  children: DataForm[];
 }
 
 export interface iForm {
@@ -14,17 +14,22 @@ export interface iForm {
   get_fields(): Field[]; // Получить список видимых полей
   close_message(): void; // Удалить сообщение об ошибке
   open_message(text: string, status: MessageType, timer?: number): void; // Сообщить об ошибке
+  submit: () => any; // Функция отправки формы
+  close: () => any; // Функция закрытия формы
 }
 
-class Form implements iForm {
+export class Form implements iForm {
 
 	private fields: Field[];
 	private extra_fields: Field[];
 	public message: iMessage;
 	public children: Form[];
 	public get_fields = () => this.fields;
+	private on_submit = console.log;
+	private on_close = console.log;
 	
-	constructor(fields: Field[] = [], children: Form[] = [], extra_fields: Field[] = [],) {
+	constructor(on_submit?: (state: DataForm) => any, on_close?: () => any,
+		        fields: Field[] = [], children: Form[] = [], extra_fields?: Field[],) {
 	  this.children = children;
 	  this.fields = fields;
 	  this.extra_fields = extra_fields;
@@ -55,6 +60,14 @@ class Form implements iForm {
 
 	public close_message(): void {
 	  this.message = undefined;	
+	}
+
+	public submit(): any {
+	  return this.on_submit(this.set_data());
+	}
+
+	public close(): any {
+	  return this.on_close();
 	}
 
 	private open_fields(): void {
