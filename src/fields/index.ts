@@ -4,23 +4,23 @@ import { iMessage } from '../message';
 type TypeField = 'checkbox' | 'text' | 'select' | 'file' | 'img' | 'textarea' | 'info' | 'password';
 
 export interface iField {
-  readonly label: string,
-  readonly type: TypeField,
-  readonly required: boolean,
+  label: string,
+  type: TypeField,
+  required: boolean,
   options?: string[],
-  readonly multiple?: boolean,
+  multiple?: boolean,
   val: any;
   message?: iMessage,
-  readonly name: string,
+  name: string,
 }
 
 class StringField implements iField {
 	
-	public readonly name: string;
-	public readonly label: string;
+	public name: string;
+	public label: string;
 	public val: string;
-	public readonly type: TypeField;
-	readonly required: boolean;
+	public type: TypeField;
+	public required: boolean;
   public message;
 
 	constructor(name: string, label: string, val: string = '', required: boolean = true, type?: TypeField,) {
@@ -56,12 +56,12 @@ export class TextareaField extends StringField {
 
 class UrlField implements iField {
 
-  public readonly name: string;
-  public readonly label: string;
+  public name: string;
+  public label: string;
   public val: string[];
   public readonly type: TypeField;
-  public readonly multiple: boolean;
-  readonly required: boolean;
+  public multiple: boolean;
+  public required: boolean;
   public message;
 
   constructor(name: string, label: string, val: string[] = [], type: TypeField, required: boolean, multiple: boolean = false) {
@@ -86,13 +86,13 @@ export class FileField extends UrlField {
 
 export class SelectField implements iField {
 
-  public readonly name: string;
-  public readonly label: string;
+  public name: string;
+  public label: string;
   public val: any[];
   public readonly type: 'select';
-  public readonly multiple: boolean;
+  public multiple: boolean;
   public options: any[];
-  readonly required: boolean;
+  public required: boolean;
   public message;
 
   constructor(name: string, label: string, val: string[] = [], required: boolean,
@@ -109,11 +109,11 @@ export class SelectField implements iField {
 
 export class BooleanField implements iField {
 
-  public readonly name: string;
-  public readonly label: string;
+  public name: string;
+  public label: string;
   public val: boolean;
   public readonly type: 'checkbox';
-  readonly required: boolean;
+  public required: boolean;
   public message;
 
   constructor(name: string, label: string, val: boolean = false, type: TypeField, required: boolean,) {
