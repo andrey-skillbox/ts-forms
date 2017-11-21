@@ -3,9 +3,9 @@ import { iMessage } from '../message';
 
 type TypeField = 'checkbox' | 'text' | 'select' | 'file' | 'img' | 'textarea' | 'info' | 'password';
 
-export interface iField {
+interface iField {
   label: string,
-  type: TypeField,
+  readonly type: TypeField,
   required: boolean,
   options?: string[],
   multiple?: boolean,
@@ -59,7 +59,7 @@ class UrlField implements iField {
   public name: string;
   public label: string;
   public val: string[];
-  public readonly type: TypeField;
+  public type: TypeField;
   public multiple: boolean;
   public required: boolean;
   public message: iMessage;
@@ -89,7 +89,7 @@ export class SelectField implements iField {
   public name: string;
   public label: string;
   public val: any[];
-  public readonly type: 'select';
+  public type: 'select';
   public multiple: boolean;
   public options: any[];
   public required: boolean;
@@ -112,7 +112,7 @@ export class BooleanField implements iField {
   public name: string;
   public label: string;
   public val: boolean;
-  public readonly type: 'checkbox';
+  public type: 'checkbox';
   public required: boolean;
   public message: iMessage;
 
