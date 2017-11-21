@@ -28,8 +28,8 @@ export class Form implements iForm {
 	private on_submit = console.log;
 	private on_close = console.log;
 	
-	constructor(on_submit?: (state: DataForm) => any, on_close?: () => any,
-		        fields: Field[] = [], children: Form[] = [], extra_fields?: Field[],) {
+	constructor(fields: Field[] = [], children: Form[] = [], extra_fields?: Field[],
+		        on_submit?: (state: DataForm) => any, on_close?: () => any,) {
 	  this.children = children;
 	  this.fields = fields;
 	  this.extra_fields = extra_fields;

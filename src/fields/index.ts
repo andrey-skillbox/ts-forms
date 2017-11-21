@@ -23,11 +23,13 @@ class StringField implements iField {
 	readonly required: boolean;
   public message;
 
-	constructor(name: string, label: string, val: string = '', required: boolean, type: TypeField,) {
+	constructor(name: string, label: string, val: string = '', required: boolean = true, type?: TypeField,) {
 	  this.name = name;
 	  this.label = label;
 	  this.val = val;
-	  this.type = type;
+    if (type){
+      this.type = type;
+    }
 	  this.required = required;
 	}
 }
